@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Alexis Sapone</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-content">
+        <div class="logo">AS.</div>
+        <nav class="nav">
+          <a href="#about" data-i18n="nav.about"></a>
+          <a href="#projects" data-i18n="nav.projects"></a>
+          <a href="#skills" data-i18n="nav.skills"></a>
+          <a href="#contact" data-i18n="nav.contact"></a>
+        </nav>
+        <div class="topbar-actions">
+          <button class="lang-toggle" data-lang="fr">FR</button>
+          <button class="lang-toggle" data-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-text">
+            <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+            <h1 data-i18n="hero.title"></h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle"></p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn primary" data-i18n="hero.ctaPrimary"></a>
+              <a href="#contact" class="btn ghost" data-i18n="hero.ctaSecondary"></a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="avatar-circle">
+              <span>AS</span>
+            </div>
+            <div class="hero-card-info">
+              <p class="hero-card-name">Alexis Sapone</p>
+              <p class="hero-card-role" data-i18n="hero.role"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2 class="section-title" data-i18n="about.title"></h2>
+          <p class="section-text" data-i18n="about.description"></p>
+        </div>
+      </section>
+
+      <section id="projects" class="section section-alt">
+        <div class="container">
+          <h2 class="section-title" data-i18n="projects.title"></h2>
+          <p class="section-text" data-i18n="projects.intro"></p>
+          <div class="cards-grid">
+            <article class="card">
+              <h3 class="card-title" data-i18n="projects.items.0.title"></h3>
+              <p class="card-text" data-i18n="projects.items.0.description"></p>
+              <span class="card-tag" data-i18n="projects.items.0.tag"></span>
+            </article>
+            <article class="card">
+              <h3 class="card-title" data-i18n="projects.items.1.title"></h3>
+              <p class="card-text" data-i18n="projects.items.1.description"></p>
+              <span class="card-tag" data-i18n="projects.items.1.tag"></span>
+            </article>
+            <article class="card">
+              <h3 class="card-title" data-i18n="projects.items.2.title"></h3>
+              <p class="card-text" data-i18n="projects.items.2.description"></p>
+              <span class="card-tag" data-i18n="projects.items.2.tag"></span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="container">
+          <h2 class="section-title" data-i18n="skills.title"></h2>
+          <p class="section-text" data-i18n="skills.intro"></p>
+          <div class="pill-list" id="skills-list">
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-alt">
+        <div class="container contact-grid">
+          <div>
+            <h2 class="section-title" data-i18n="contact.title"></h2>
+            <p class="section-text" data-i18n="contact.description"></p>
+          </div>
+          <div class="contact-card">
+            <p data-i18n="contact.emailLabel"></p>
+            <a href="mailto:ton.email@example.com" class="contact-email">ton.email@example.com</a>
+            <p class="contact-note" data-i18n="contact.note"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <span>&copy; <span id="year"></span> Alexis Sapone</span>
+        <span data-i18n="footer.madeWith"></span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
