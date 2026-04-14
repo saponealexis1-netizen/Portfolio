@@ -1,63 +1,52 @@
 # Portfolio - Alexis Sapone
 
-Portfolio personnel Data Analyst bilingue FR/EN, construit en HTML/CSS/JS (site statique via `index.html`).
+Ce portfolio présente mon profil de Data Analyst, mes expériences et mes projets.
 
-## Aperçu
+## Présentation
 
-- Design responsive desktop/mobile
-- Bascule de langue FR/EN
-- Photo de profil et section hero personnalisées
-- Projets avec liens vers livrables PDF
-- Section contact et liens professionnels
+Portfolio bilingue (français / anglais) avec un design moderne, lisible sur ordinateur et téléphone.
 
-## Structure du site
+Le site met en avant:
 
-Ordre des sections:
+- Mon parcours académique
+- Mon parcours professionnel
+- Mes compétences techniques
+- Mes projets data avec livrables PDF
+- Mes certifications
+- Mes coordonnées de contact
 
-1. Parcours académique
-2. Parcours professionnel
-3. Stack technique
-4. Projets
-5. Certifications
-6. Travaillons ensemble
+## Contenu principal
 
-## Stack
+### Parcours académique
 
-- HTML5
-- CSS3
-- JavaScript (vanilla)
+Présentation de ma formation à Albert School (Eugenia School) et de mon parcours précédent.
 
-## Structure du repo
+### Parcours professionnel
 
-- `index.html`: site complet (HTML + CSS + JS intégrés)
-- `assets/img/`: photo de profil
-- `assets/pdf/`: livrables projets + certificats
-- `README.md`: documentation du projet
+Expériences en CRM (PMU), avec des missions en ciblage, analyse client, optimisation de parcours et suivi des KPIs.
 
-## Lancer en local
+### Stack technique
 
-1. Cloner le repo: `git clone git@github.com:saponealexis1-netizen/Portfolio.git`
-2. Ouvrir le dossier: `cd Portfolio`
-3. Ouvrir `index.html` dans un navigateur
+Compétences en SQL, Python, BI (Power BI, Tableau), Dataiku, Salesforce CRM, automatisation (Make, n8n).
 
-## Déploiement GitHub Pages
+### Projets
 
-1. Ouvrir GitHub > `Settings` > `Pages`
-2. Dans **Build and deployment**:
-   - **Source**: `Deploy from a branch`
-   - **Branch**: `main`
-   - **Folder**: `/ (root)`
-3. Sauvegarder et attendre le déploiement
+Plusieurs projets data sont présentés, notamment:
 
-URL actuelle attendue:
+- Analyse SQL des inspections sanitaires à New York
+- Analyse de données Clash Royale en Python
+- Prédiction de trafic passagers (Dataiku)
+- Dashboard Tableau e-commerce
+- Analyse des ventes sur Power BI
+- Projet de stratégie de paris sportifs (Google Sheets)
 
-- `https://saponealexis1-netizen.github.io/Portfolio/`
+Chaque projet inclut une description et, lorsque disponible, un lien vers le livrable PDF.
 
-## Convention de commits
+### Certifications
 
-Exemples utilisés dans ce repo:
+Mise en avant de certifications en Power BI et SQL.
 
-- `feat: update portfolio content and sections`
-- `style: refine hero photo display`
-- `docs: refresh README for final structure`
+### Contact
+
+Section dédiée pour me contacter par email, téléphone ou LinkedIn.
 
