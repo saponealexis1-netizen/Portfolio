@@ -1,12 +1,25 @@
 # Portfolio - Alexis Sapone
 
-Portfolio personnel Data Analyst, bilingue FR/EN, construit en HTML/CSS/JS (fichier unique `index.html`).
+Portfolio personnel Data Analyst bilingue FR/EN, construit en HTML/CSS/JS (site statique via `index.html`).
 
-## Apercu
+## Aperçu
 
-- Design responsive (desktop/mobile)
-- Contenu bilingue avec bascule FR/EN
-- Sections: About, Formation, Competences, Projets, Experience, Certifications, Contact
+- Design responsive desktop/mobile
+- Bascule de langue FR/EN
+- Photo de profil et section hero personnalisées
+- Projets avec liens vers livrables PDF
+- Section contact et liens professionnels
+
+## Structure du site
+
+Ordre des sections:
+
+1. Parcours académique
+2. Parcours professionnel
+3. Stack technique
+4. Projets
+5. Certifications
+6. Travaillons ensemble
 
 ## Stack
 
@@ -14,44 +27,37 @@ Portfolio personnel Data Analyst, bilingue FR/EN, construit en HTML/CSS/JS (fich
 - CSS3
 - JavaScript (vanilla)
 
+## Structure du repo
+
+- `index.html`: site complet (HTML + CSS + JS intégrés)
+- `assets/img/`: photo de profil
+- `assets/pdf/`: livrables projets + certificats
+- `README.md`: documentation du projet
+
 ## Lancer en local
 
-1. Cloner le repo:
-   `git clone git@github.com:saponealexis1-netizen/Portfolio.git`
-2. Ouvrir le dossier:
-   `cd Portfolio`
-3. Ouvrir `index.html` dans un navigateur.
+1. Cloner le repo: `git clone git@github.com:saponealexis1-netizen/Portfolio.git`
+2. Ouvrir le dossier: `cd Portfolio`
+3. Ouvrir `index.html` dans un navigateur
 
-## Deploiement GitHub Pages (obligatoire)
+## Déploiement GitHub Pages
 
-Le site doit etre publie via GitHub Pages.
-
-1. Sur GitHub: `Settings > Pages`
+1. Ouvrir GitHub > `Settings` > `Pages`
 2. Dans **Build and deployment**:
    - **Source**: `Deploy from a branch`
    - **Branch**: `main`
    - **Folder**: `/ (root)`
-3. Sauvegarder puis attendre le deploiement.
+3. Sauvegarder et attendre le déploiement
 
-## URL cible
-
-Contrainte demandee: `https://votreuser.github.io/portfolio`
-
-Important: pour obtenir exactement `/portfolio` en URL, le nom du repository doit etre `portfolio` (en minuscules).  
-Si le repo reste `Portfolio`, l'URL publique sera en pratique:
+URL actuelle attendue:
 
 - `https://saponealexis1-netizen.github.io/Portfolio/`
 
-## Structure du repo
+## Convention de commits
 
-- `index.html`: site complet (HTML + CSS + JS integres)
-- `README.md`: documentation du projet
+Exemples utilisés dans ce repo:
 
-## Versionning / commits
-
-Exemple de convention de commits claire:
-
-- `feat: add bilingual data analyst portfolio`
-- `docs: add clean README and deployment guide`
-- `chore: update profile content`
+- `feat: update portfolio content and sections`
+- `style: refine hero photo display`
+- `docs: refresh README for final structure`
 

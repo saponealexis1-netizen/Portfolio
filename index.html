@@ -160,36 +160,24 @@ nav {
 .hero-visual {
   display: flex; justify-content: center; align-items: center;
 }
-.hero-card {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 32px;
-  width: 100%; max-width: 380px;
-  position: relative; overflow: hidden;
+.hero-photo-wrap {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  overflow: hidden;
+  background: transparent;
 }
-.hero-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 999px;
+  border: none;
+  display: block;
+  transform: scale(1.12);
 }
-.hero-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-.hero-avatar {
-  width: 56px; height: 56px; border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 1.3rem; color: #fff;
-  font-weight: 700;
-}
-.hero-card-name { font-weight: 600; font-size: 1rem; }
-.hero-card-role { color: var(--text-muted); font-size: 0.82rem; }
-.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.hero-stat {
-  background: rgba(255,255,255,0.03); border-radius: var(--radius-sm);
-  padding: 14px; text-align: center;
-}
-.hero-stat-val {
-  font-family: var(--font-display); font-size: 1.5rem; color: var(--accent);
-  margin-bottom: 2px;
-}
-.hero-stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
 @media (max-width: 768px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -325,6 +313,11 @@ section { padding: 80px 24px; }
 }
 .project-link:hover { gap: 10px; }
 .project-link svg { width: 14px; height: 14px; }
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
 /* ===================== EXPERIENCE ===================== */
 .exp-grid { display: flex; flex-direction: column; gap: 20px; }
@@ -432,13 +425,13 @@ footer {
 <!-- ============ NAV ============ -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">alexis<span>.</span>sapone</a>
+    <a href="#" class="nav-logo">Sapone Alexis</a>
     <div class="nav-links">
       <a href="#about" data-fr="À propos" data-en="About">À propos</a>
       <a href="#education" data-fr="Formation" data-en="Education">Formation</a>
+      <a href="#experience" data-fr="Expériences" data-en="Experience">Expériences</a>
       <a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a>
       <a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
-      <a href="#experience" data-fr="Expériences" data-en="Experience">Expériences</a>
       <a href="#certifications" data-fr="Certifications" data-en="Certifications">Certifications</a>
       <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
       <button class="lang-toggle lang-toggle-desktop" onclick="toggleLang()">EN</button>
@@ -453,9 +446,9 @@ footer {
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMenu()" data-fr="À propos" data-en="About">À propos</a>
     <a href="#education" onclick="closeMenu()" data-fr="Formation" data-en="Education">Formation</a>
+    <a href="#experience" onclick="closeMenu()" data-fr="Expériences" data-en="Experience">Expériences</a>
     <a href="#skills" onclick="closeMenu()" data-fr="Compétences" data-en="Skills">Compétences</a>
     <a href="#projects" onclick="closeMenu()" data-fr="Projets" data-en="Projects">Projets</a>
-    <a href="#experience" onclick="closeMenu()" data-fr="Expériences" data-en="Experience">Expériences</a>
     <a href="#certifications" onclick="closeMenu()" data-fr="Certifications" data-en="Certifications">Certifications</a>
     <a href="#contact" onclick="closeMenu()" data-fr="Contact" data-en="Contact">Contact</a>
   </div>
@@ -469,39 +462,15 @@ footer {
         <span data-fr="Recherche un stage — Sept. 2027" data-en="Looking for internship — Sept. 2027">Recherche un stage — Sept. 2027</span>
       </div>
       <h1 data-fr="Alexis Sapone,<br><em>Data Analyst</em>" data-en="Alexis Sapone,<br><em>Data Analyst</em>">Alexis Sapone,<br><em>Data Analyst</em></h1>
-      <p class="hero-desc" data-fr="Étudiant en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business. Passionné par l'analyse de données, le machine learning et la business intelligence." data-en="MSc Data & AI for Business student at Albert School (Eugenia School) and Grande École programme at PSB Paris School of Business. Passionate about data analysis, machine learning and business intelligence.">Étudiant en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business. Passionné par l'analyse de données, le machine learning et la business intelligence.</p>
+      <p class="hero-desc" data-fr="Étudiant en MSc Data & AI for Business à Albert School (Eugenia School), je suis passionné par l’analyse de données et l’intelligence artificielle." data-en="MSc Data & AI for Business student at Albert School (Eugenia School), I am passionate about data analysis and artificial intelligence.">Étudiant en MSc Data & AI for Business à Albert School (Eugenia School), je suis passionné par l’analyse de données et l’intelligence artificielle.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary" data-fr="Voir mes projets ↓" data-en="View projects ↓">Voir mes projets ↓</a>
         <a href="#contact" class="btn btn-outline" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-card">
-        <div class="hero-card-header">
-          <div class="hero-avatar">AS</div>
-          <div>
-            <div class="hero-card-name">Alexis Sapone</div>
-            <div class="hero-card-role">Data Analyst</div>
-          </div>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-val">8+</div>
-            <div class="hero-stat-label" data-fr="Projets Data" data-en="Data Projects">Projets Data</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-val">3</div>
-            <div class="hero-stat-label" data-fr="Langues" data-en="Languages">Langues</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-val">2</div>
-            <div class="hero-stat-label" data-fr="Certifications" data-en="Certifications">Certifications</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-val">C1</div>
-            <div class="hero-stat-label" data-fr="Anglais" data-en="English">Anglais</div>
-          </div>
-        </div>
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="assets/img/alexis-profile.png" alt="Photo de profil de Sapone Alexis">
       </div>
     </div>
   </div>
@@ -514,8 +483,8 @@ footer {
     <div class="section-title" data-fr="Un profil <em>data-driven</em>" data-en="A <em>data-driven</em> profile">Un profil <em>data-driven</em></div>
     <div class="about-grid">
       <div class="about-text">
-        <p data-fr="Actuellement en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business (accréditations AACSB, EFMD, AMBA, EPAS, BGA), je développe une double compétence business et technique tournée vers la data." data-en="Currently pursuing an MSc in Data & AI for Business at Albert School (Eugenia School) alongside the Grande École programme at PSB Paris School of Business (AACSB, EFMD, AMBA, EPAS, BGA accreditations), I am building a dual business and technical skillset focused on data.">Actuellement en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business (accréditations AACSB, EFMD, AMBA, EPAS, BGA), je développe une double compétence business et technique tournée vers la data.</p>
-        <p data-fr="Mon parcours m'a permis de travailler sur des projets variés en SQL, Python, Power BI, Dataiku, Tableau et des outils d'automatisation comme Make et N8n. Je recherche un stage en Data Analyst pour septembre 2027, d'une durée de 6 mois." data-en="My academic journey has allowed me to work on diverse projects involving SQL, Python, Power BI, Dataiku, Tableau, and automation tools like Make and N8n. I am looking for a 6-month Data Analyst internship starting September 2027.">Mon parcours m'a permis de travailler sur des projets variés en SQL, Python, Power BI, Dataiku, Tableau et des outils d'automatisation comme Make et N8n. Je recherche un stage en Data Analyst pour septembre 2027, d'une durée de 6 mois.</p>
+        <p data-fr="Actuellement étudiant en MSc Data & AI for Business à Albert School (Eugenia School), je développe une approche analytique orientée business et résultats." data-en="Currently an MSc Data & AI for Business student at Albert School (Eugenia School), I am developing a business-oriented analytical approach focused on impact.">Actuellement étudiant en MSc Data & AI for Business à Albert School (Eugenia School), je développe une approche analytique orientée business et résultats.</p>
+        <p data-fr="Mon parcours m'a permis de travailler sur des projets variés en SQL, Python, Power BI, Dataiku, Tableau et des outils d'automatisation comme Make et N8n. Je cherche à appliquer ces compétences à des problématiques concrètes et je recherche un stage en Data Analyst pour septembre 2027, d'une durée de 6 mois." data-en="My background has allowed me to work on diverse projects in SQL, Python, Power BI, Dataiku, Tableau and automation tools such as Make and N8n. I aim to apply these skills to concrete business problems and I am looking for a 6-month Data Analyst internship starting in September 2027.">Mon parcours m'a permis de travailler sur des projets variés en SQL, Python, Power BI, Dataiku, Tableau et des outils d'automatisation comme Make et N8n. Je cherche à appliquer ces compétences à des problématiques concrètes et je recherche un stage en Data Analyst pour septembre 2027, d'une durée de 6 mois.</p>
       </div>
       <div class="about-info">
         <div class="about-info-item">
@@ -551,14 +520,14 @@ footer {
           <div class="edu-school">Albert School (Eugenia School)</div>
           <div class="edu-degree" data-fr="MSc Data & AI for Business" data-en="MSc Data & AI for Business">MSc Data & AI for Business</div>
           <div class="edu-tags">
-            <span class="edu-tag">Data Science</span>
-            <span class="edu-tag">Machine Learning</span>
+            <span class="edu-tag">Data Analyst</span>
             <span class="edu-tag">Business Strategy</span>
+            <span class="edu-tag">Artificial Intelligence</span>
           </div>
         </div>
       </div>
       <div class="edu-item">
-        <div class="edu-date">2021 — <span data-fr="en cours" data-en="present">en cours</span></div>
+        <div class="edu-date">2021 — Sept. 2025</div>
         <div>
           <div class="edu-school">PSB Paris School of Business</div>
           <div class="edu-degree" data-fr="Programme Grande École — Master 2 : Marketing Insights & Data Analytics Strategy" data-en="Grande École Programme — Master 2: Marketing Insights & Data Analytics Strategy">Programme Grande École — Master 2 : Marketing Insights & Data Analytics Strategy</div>
@@ -576,6 +545,48 @@ footer {
         <div>
           <div class="edu-school">Lycée Sainte Louise — Paris</div>
           <div class="edu-degree" data-fr="Baccalauréat : Mathématiques, Physique-Chimie — Mention Assez Bien" data-en="Baccalauréat: Mathematics, Physics-Chemistry — Honours">Baccalauréat : Mathématiques, Physique-Chimie — Mention Assez Bien</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// expériences" data-en="// experience">// expériences</div>
+    <div class="section-title" data-fr="Parcours <em>professionnel</em>" data-en="Professional <em>experience</em>">Parcours <em>professionnel</em></div>
+    <div class="exp-grid">
+      <div class="exp-item">
+        <div class="exp-date" data-fr="Sept. 2026 — Aujourd'hui" data-en="Sep. 2026 — Present">Sept. 2026 — Aujourd'hui</div>
+        <div>
+          <div class="exp-role" data-fr="Analyste CRM" data-en="CRM Analyst">Analyste CRM</div>
+          <div class="exp-company">PMU — Paris</div>
+          <div class="exp-tasks" data-fr="Élaboration de ciblages complexes pour les campagnes marketing. Analyse de données clients. Création et optimisation de parcours clients personnalisés. Suivi de KPIs pour mesurer l’efficacité des campagnes. Utilisation avancée des outils CRM (Salesforce, Dataiku...)." data-en="Built complex targeting strategies for marketing campaigns. Analyzed customer data. Created and optimized personalized customer journeys. Monitored KPIs to measure campaign effectiveness. Advanced use of CRM tools (Salesforce, Dataiku...).">Élaboration de ciblages complexes pour les campagnes marketing. Analyse de données clients. Création et optimisation de parcours clients personnalisés. Suivi de KPIs pour mesurer l’efficacité des campagnes. Utilisation avancée des outils CRM (Salesforce, Dataiku...).</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date" data-fr="Sept. 2025 — Sept. 2026" data-en="Sep. 2025 — Sep. 2026">Sept. 2025 — Sept. 2026</div>
+        <div>
+          <div class="exp-role" data-fr="Chargé de campagnes CRM" data-en="CRM Campaign Manager">Chargé de campagnes CRM</div>
+          <div class="exp-company">PMU — Paris</div>
+          <div class="exp-tasks" data-fr="Conception et déploiement opérationnel de campagnes CRM multicanales. Paramétrage des ciblages, gestion du planning de diffusion, coordination avec les équipes marketing et contrôle qualité des envois. Participation à l’optimisation continue des campagnes (A/B tests, délivrabilité, taux d’ouverture/clic, conversions)." data-en="Designed and executed multi-channel CRM campaigns. Set up targeting rules, managed campaign calendars, coordinated with marketing teams, and ensured delivery quality. Contributed to continuous optimization through A/B testing, deliverability monitoring, open/click rates and conversion tracking.">Conception et déploiement opérationnel de campagnes CRM multicanales. Paramétrage des ciblages, gestion du planning de diffusion, coordination avec les équipes marketing et contrôle qualité des envois. Participation à l’optimisation continue des campagnes (A/B tests, délivrabilité, taux d’ouverture/clic, conversions).</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date" data-fr="Fév. — Août 2024" data-en="Feb. — Aug. 2024">Fév. — Août 2024</div>
+        <div>
+          <div class="exp-role" data-fr="Stage Assistant Comptable" data-en="Accounting Assistant Intern">Stage Assistant Comptable</div>
+          <div class="exp-company">BTPSHOP — Fontenay-sous-Bois</div>
+          <div class="exp-tasks" data-fr="Analyse de données financières. Automatisation de tableaux sur Excel. Vérification et structuration de bases de données. Gestion des données comptables et suivi des comptes clients et fournisseurs." data-en="Financial data analysis. Excel spreadsheet automation. Database verification and structuring. Accounting data management and client/supplier account tracking.">Analyse de données financières. Automatisation de tableaux sur Excel. Vérification et structuration de bases de données. Gestion des données comptables et suivi des comptes clients et fournisseurs.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date" data-fr="Juil. — Août 2019" data-en="Jul. — Aug. 2019">Juil. — Août 2019</div>
+        <div>
+          <div class="exp-role" data-fr="Stage Assistant Administratif" data-en="Administrative Assistant Intern">Stage Assistant Administratif</div>
+          <div class="exp-company" data-fr="Cabinet BLAESI (Avocats) — Paris 1er" data-en="BLAESI Law Firm — Paris 1st">Cabinet BLAESI (Avocats) — Paris 1er</div>
+          <div class="exp-tasks" data-fr="Gestion et traitement de données sur Excel. Saisie et mise à jour de bases de données. Classement et organisation des dossiers administratifs. Accueil téléphonique et gestion des courriers." data-en="Excel data management and processing. Data entry and database updates. Administrative file organization. Phone reception and mail handling.">Gestion et traitement de données sur Excel. Saisie et mise à jour de bases de données. Classement et organisation des dossiers administratifs. Accueil téléphonique et gestion des courriers.</div>
         </div>
       </div>
     </div>
@@ -686,6 +697,11 @@ footer {
             <span class="project-tag" data-fr="Nettoyage de données" data-en="Data Cleaning">Nettoyage de données</span>
             <span class="project-tag" data-fr="Analyse exploratoire" data-en="Exploratory Analysis">Analyse exploratoire</span>
           </div>
+          <div class="project-links">
+            <a href="assets/pdf/Livrable-SQL-nyc-inspections.pdf" target="_blank" class="project-link" data-fr="Voir le PDF" data-en="View PDF">
+              Voir le PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -716,9 +732,14 @@ footer {
             <span class="project-tag">Pandas</span>
             <span class="project-tag">Matplotlib</span>
           </div>
-          <a href="https://github.com/eugenia-MZ/projet_Clash_Royale" target="_blank" class="project-link">
-            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-          </a>
+          <div class="project-links">
+            <a href="assets/pdf/Projet-Clash-Royale.pdf" target="_blank" class="project-link" data-fr="Voir le PDF" data-en="View PDF">
+              Voir le PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/eugenia-MZ/projet_Clash_Royale" target="_blank" class="project-link">
+              GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -749,6 +770,11 @@ footer {
             <span class="project-tag">XGBoost</span>
             <span class="project-tag" data-fr="Prédiction" data-en="Prediction">Prédiction</span>
           </div>
+          <div class="project-links">
+            <a href="assets/pdf/Air-passengers.pdf" target="_blank" class="project-link" data-fr="Voir le PDF" data-en="View PDF">
+              Voir le PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -778,6 +804,41 @@ footer {
             <span class="project-tag">Dashboard</span>
             <span class="project-tag">KPI</span>
             <span class="project-tag" data-fr="Cartographie" data-en="Mapping">Cartographie</span>
+          </div>
+          <div class="project-links">
+            <a href="assets/pdf/Projet-Tableau.pdf" target="_blank" class="project-link" data-fr="Voir le PDF" data-en="View PDF">
+              Voir le PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Power BI Sales -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Power BI</span>
+          </div>
+          <div class="project-title" data-fr="Projet Power BI - Analyse des ventes" data-en="Power BI Project - Sales Analysis">Projet Power BI - Analyse des ventes</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Projet d’analyse de la performance commerciale d’une entreprise à partir de données de ventes." data-en="Sales performance analysis project based on company sales data.">Projet d’analyse de la performance commerciale d’une entreprise à partir de données de ventes.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Analyser les performances des ventes et piloter l’activité via des indicateurs clés." data-en="Analyze sales performance and monitor activity through key indicators.">Analyser les performances des ventes et piloter l’activité via des indicateurs clés.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Création de tableaux de bord interactifs, modélisation des données, analyse des tendances et suivi des KPI pour faciliter la prise de décision." data-en="Built interactive dashboards, modeled data, analyzed trends and tracked KPIs to support decision-making.">Création de tableaux de bord interactifs, modélisation des données, analyse des tendances et suivi des KPI pour faciliter la prise de décision.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Power BI</span>
+            <span class="project-tag">Dashboard</span>
+            <span class="project-tag">Data Modeling</span>
+            <span class="project-tag">KPI</span>
           </div>
         </div>
       </div>
@@ -839,6 +900,11 @@ footer {
             <span class="project-tag">Heatmaps</span>
             <span class="project-tag" data-fr="Patterns saisonniers" data-en="Seasonal Patterns">Patterns saisonniers</span>
           </div>
+          <div class="project-links">
+            <a href="assets/pdf/Strategie-de-paris-sportifs.pdf" target="_blank" class="project-link" data-fr="Voir le PDF" data-en="View PDF">
+              Voir le PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -876,32 +942,6 @@ footer {
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section id="experience">
-  <div class="section-inner fade-in">
-    <div class="section-label" data-fr="// expériences" data-en="// experience">// expériences</div>
-    <div class="section-title" data-fr="Parcours <em>professionnel</em>" data-en="Professional <em>experience</em>">Parcours <em>professionnel</em></div>
-    <div class="exp-grid">
-      <div class="exp-item">
-        <div class="exp-date" data-fr="Fév. — Août 2024" data-en="Feb. — Aug. 2024">Fév. — Août 2024</div>
-        <div>
-          <div class="exp-role" data-fr="Stage Assistant Comptable" data-en="Accounting Assistant Intern">Stage Assistant Comptable</div>
-          <div class="exp-company">BTPSHOP — Fontenay-sous-Bois</div>
-          <div class="exp-tasks" data-fr="Analyse de données financières. Automatisation de tableaux sur Excel. Vérification et structuration de bases de données. Gestion des données comptables et suivi des comptes clients et fournisseurs." data-en="Financial data analysis. Excel spreadsheet automation. Database verification and structuring. Accounting data management and client/supplier account tracking.">Analyse de données financières. Automatisation de tableaux sur Excel. Vérification et structuration de bases de données. Gestion des données comptables et suivi des comptes clients et fournisseurs.</div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date" data-fr="Juil. — Août 2019" data-en="Jul. — Aug. 2019">Juil. — Août 2019</div>
-        <div>
-          <div class="exp-role" data-fr="Stage Assistant Administratif" data-en="Administrative Assistant Intern">Stage Assistant Administratif</div>
-          <div class="exp-company" data-fr="Cabinet BLAESI (Avocats) — Paris 1er" data-en="BLAESI Law Firm — Paris 1st">Cabinet BLAESI (Avocats) — Paris 1er</div>
-          <div class="exp-tasks" data-fr="Gestion et traitement de données sur Excel. Saisie et mise à jour de bases de données. Classement et organisation des dossiers administratifs. Accueil téléphonique et gestion des courriers." data-en="Excel data management and processing. Data entry and database updates. Administrative file organization. Phone reception and mail handling.">Gestion et traitement de données sur Excel. Saisie et mise à jour de bases de données. Classement et organisation des dossiers administratifs. Accueil téléphonique et gestion des courriers.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ CERTIFICATIONS ============ -->
 <section id="certifications">
   <div class="section-inner fade-in">
@@ -914,6 +954,9 @@ footer {
           <div class="cert-name">Complete Power BI Bootcamp</div>
           <div class="cert-issuer">Nikolai Schuler — Udemy</div>
           <div class="cert-date">2024</div>
+          <a href="assets/pdf/PowerBI-certification.pdf" target="_blank" class="project-link" data-fr="Voir le certificat PDF" data-en="View certificate PDF">
+            Voir le certificat PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
         </div>
       </div>
       <div class="cert-card">
@@ -922,6 +965,9 @@ footer {
           <div class="cert-name">The Complete SQL Masterclass</div>
           <div class="cert-issuer">Nikolai Schuler — Udemy</div>
           <div class="cert-date">2024</div>
+          <a href="assets/pdf/Sql-certification.pdf" target="_blank" class="project-link" data-fr="Voir le certificat PDF" data-en="View certificate PDF">
+            Voir le certificat PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -975,7 +1021,7 @@ footer {
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <p>© 2026 Alexis Sapone — <span data-fr="Portfolio réalisé avec soin" data-en="Portfolio crafted with care">Portfolio réalisé avec soin</span></p>
+  <p>© 2026 Alexis Sapone</p>
 </footer>
 
 <!-- ============ SCRIPTS ============ -->
