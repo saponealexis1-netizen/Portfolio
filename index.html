@@ -1,124 +1,1032 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Alexis Sapone</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="container topbar-content">
-        <div class="logo">AS.</div>
-        <nav class="nav">
-          <a href="#about" data-i18n="nav.about"></a>
-          <a href="#projects" data-i18n="nav.projects"></a>
-          <a href="#skills" data-i18n="nav.skills"></a>
-          <a href="#contact" data-i18n="nav.contact"></a>
-        </nav>
-        <div class="topbar-actions">
-          <button class="lang-toggle" data-lang="fr">FR</button>
-          <button class="lang-toggle" data-lang="en">EN</button>
-        </div>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexis Sapone — Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-card-hover: #1a1a26;
+  --text: #e8e6e3;
+  --text-muted: #8a8a9a;
+  --accent: #4f8fff;
+  --accent-glow: rgba(79, 143, 255, 0.15);
+  --accent2: #f59e0b;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'Sora', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --max-w: 1200px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===================== NAV ===================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-display); font-size: 1.25rem; color: var(--text);
+  text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-links a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.82rem;
+  font-weight: 500; padding: 6px 14px; border-radius: 8px;
+  transition: var(--transition); letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.lang-toggle {
+  background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+  color: var(--text); padding: 6px 14px; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body); transition: var(--transition);
+  margin-left: 8px;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.1); border-color: var(--border-hover); }
+
+/* Mobile menu */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.hamburger span { display: block; width: 20px; height: 2px; background: var(--text); margin: 5px 0; transition: var(--transition); border-radius: 2px; }
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0;
+  background: rgba(10,10,15,0.97); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border); padding: 16px 24px;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+  font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.mobile-menu a:hover { color: var(--text); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .lang-toggle-desktop { display: none; }
+}
+@media (min-width: 769px) {
+  .lang-toggle-mobile { display: none; }
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 24px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: var(--max-w); margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-glow); border: 1px solid rgba(79,143,255,0.2);
+  padding: 6px 16px; border-radius: 100px; font-size: 0.78rem;
+  color: var(--accent); font-weight: 600; margin-bottom: 24px;
+  letter-spacing: 0.03em;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px; background: var(--accent);
+  border-radius: 50%; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.02em;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-desc {
+  font-size: 1.05rem; color: var(--text-muted); max-width: 500px;
+  margin-bottom: 32px; line-height: 1.7;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  padding: 12px 28px; border-radius: 10px; font-size: 0.88rem;
+  font-weight: 600; text-decoration: none; transition: var(--transition);
+  font-family: var(--font-body); cursor: pointer; display: inline-flex;
+  align-items: center; gap: 8px; border: none;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 4px 20px rgba(79,143,255,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,143,255,0.4); }
+.btn-outline {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border-hover);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); }
+
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+.hero-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+  width: 100%; max-width: 380px;
+  position: relative; overflow: hidden;
+}
+.hero-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.hero-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.hero-avatar {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.3rem; color: #fff;
+  font-weight: 700;
+}
+.hero-card-name { font-weight: 600; font-size: 1rem; }
+.hero-card-role { color: var(--text-muted); font-size: 0.82rem; }
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hero-stat {
+  background: rgba(255,255,255,0.03); border-radius: var(--radius-sm);
+  padding: 14px; text-align: center;
+}
+.hero-stat-val {
+  font-family: var(--font-display); font-size: 1.5rem; color: var(--accent);
+  margin-bottom: 2px;
+}
+.hero-stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { order: -1; }
+  .hero-card { max-width: 100%; }
+}
+
+/* ===================== SECTIONS ===================== */
+section { padding: 80px 24px; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section-label {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;
+  font-weight: 500;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 48px; letter-spacing: -0.02em;
+}
+.section-title em { font-style: italic; color: var(--accent); }
+
+/* ===================== ABOUT ===================== */
+.about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; }
+.about-text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
+.about-text p + p { margin-top: 16px; }
+.about-info { display: flex; flex-direction: column; gap: 12px; }
+.about-info-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 20px;
+}
+.about-info-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.about-info-value { font-weight: 600; font-size: 0.92rem; }
+.about-info-value a { color: var(--accent); text-decoration: none; }
+.about-info-value a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* ===================== EDUCATION ===================== */
+.edu-timeline { display: flex; flex-direction: column; gap: 24px; }
+.edu-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 32px;
+  display: grid; grid-template-columns: 140px 1fr; gap: 24px;
+  transition: var(--transition);
+}
+.edu-item:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+.edu-date { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); padding-top: 4px; }
+.edu-school { font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
+.edu-degree { color: var(--text-muted); font-size: 0.88rem; }
+.edu-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.edu-tag {
+  font-size: 0.7rem; padding: 3px 10px; border-radius: 100px;
+  background: var(--accent-glow); color: var(--accent);
+  border: 1px solid rgba(79,143,255,0.15); font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .edu-item { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ===================== SKILLS ===================== */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.skill-category {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+  transition: var(--transition);
+}
+.skill-category:hover { border-color: var(--border-hover); }
+.skill-cat-icon { font-size: 1.5rem; margin-bottom: 12px; }
+.skill-cat-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 16px; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  font-size: 0.78rem; padding: 6px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  color: var(--text); font-weight: 500; transition: var(--transition);
+}
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.skill-tag.highlight {
+  background: var(--accent-glow); border-color: rgba(79,143,255,0.25);
+  color: var(--accent);
+}
+
+/* ===================== PROJECTS ===================== */
+.projects-grid { display: flex; flex-direction: column; gap: 32px; }
+.project-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: var(--transition);
+}
+.project-card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.project-content { padding: 32px; }
+.project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.project-tech-badge {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  padding: 4px 12px; border-radius: 6px;
+  background: var(--accent-glow); color: var(--accent);
+  border: 1px solid rgba(79,143,255,0.2); font-weight: 500;
+}
+.project-title { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 12px; }
+.project-meta { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.project-meta-item {
+  display: flex; gap: 12px; font-size: 0.88rem;
+}
+.project-meta-label { color: var(--accent); font-weight: 600; min-width: 80px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 2px; }
+.project-meta-value { color: var(--text-muted); line-height: 1.6; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.project-tag {
+  font-size: 0.72rem; padding: 4px 10px; border-radius: 6px;
+  background: rgba(255,255,255,0.04); color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.project-images {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px; padding: 0 32px 32px;
+}
+.project-img-container {
+  border-radius: var(--radius-sm); overflow: hidden;
+  border: 1px solid var(--border); background: #1a1a26;
+  aspect-ratio: 16/10;
+}
+.project-img-container img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: var(--transition);
+}
+.project-img-container:hover img { transform: scale(1.03); }
+.project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--accent); text-decoration: none; font-size: 0.85rem;
+  font-weight: 600; margin-top: 12px; transition: var(--transition);
+}
+.project-link:hover { gap: 10px; }
+.project-link svg { width: 14px; height: 14px; }
+
+/* ===================== EXPERIENCE ===================== */
+.exp-grid { display: flex; flex-direction: column; gap: 20px; }
+.exp-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 32px;
+  display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+  transition: var(--transition);
+}
+.exp-item:hover { border-color: var(--border-hover); }
+.exp-date { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); padding-top: 4px; }
+.exp-role { font-weight: 600; font-size: 1.05rem; margin-bottom: 2px; }
+.exp-company { color: var(--accent2); font-size: 0.88rem; margin-bottom: 10px; }
+.exp-tasks { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .exp-item { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ===================== CERTIFICATIONS ===================== */
+.certs-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.cert-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 28px;
+  display: flex; align-items: center; gap: 20px;
+  transition: var(--transition);
+}
+.cert-card:hover { border-color: var(--accent2); }
+.cert-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.cert-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 2px; }
+.cert-issuer { color: var(--text-muted); font-size: 0.8rem; }
+.cert-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2); margin-top: 4px; }
+
+/* ===================== CONTACT ===================== */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-item {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px;
+  text-decoration: none; color: var(--text);
+  transition: var(--transition);
+}
+.contact-item:hover { border-color: var(--accent); }
+.contact-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent-glow); border: 1px solid rgba(79,143,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 1.1rem;
+}
+.contact-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.contact-value { font-weight: 600; font-size: 0.92rem; }
+.contact-cta {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 40px;
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: center; text-align: center;
+}
+.contact-cta h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 12px; }
+.contact-cta p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  padding: 32px 24px; border-top: 1px solid var(--border);
+  text-align: center; color: var(--text-muted); font-size: 0.8rem;
+}
+
+/* ===================== ANIMATIONS ===================== */
+.fade-in {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ===================== NO PROJECT IMAGES PLACEHOLDER ===================== */
+.project-visual-placeholder {
+  background: linear-gradient(135deg, rgba(79,143,255,0.08) 0%, rgba(245,158,11,0.05) 100%);
+  border-radius: var(--radius-sm); padding: 40px 24px;
+  text-align: center; color: var(--text-muted); font-size: 0.82rem;
+  border: 1px dashed var(--border);
+  margin: 0 32px 32px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">alexis<span>.</span>sapone</a>
+    <div class="nav-links">
+      <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+      <a href="#education" data-fr="Formation" data-en="Education">Formation</a>
+      <a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a>
+      <a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
+      <a href="#experience" data-fr="Expériences" data-en="Experience">Expériences</a>
+      <a href="#certifications" data-fr="Certifications" data-en="Certifications">Certifications</a>
+      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+      <button class="lang-toggle lang-toggle-desktop" onclick="toggleLang()">EN</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="lang-toggle lang-toggle-mobile" onclick="toggleLang()">EN</button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()" data-fr="À propos" data-en="About">À propos</a>
+    <a href="#education" onclick="closeMenu()" data-fr="Formation" data-en="Education">Formation</a>
+    <a href="#skills" onclick="closeMenu()" data-fr="Compétences" data-en="Skills">Compétences</a>
+    <a href="#projects" onclick="closeMenu()" data-fr="Projets" data-en="Projects">Projets</a>
+    <a href="#experience" onclick="closeMenu()" data-fr="Expériences" data-en="Experience">Expériences</a>
+    <a href="#certifications" onclick="closeMenu()" data-fr="Certifications" data-en="Certifications">Certifications</a>
+    <a href="#contact" onclick="closeMenu()" data-fr="Contact" data-en="Contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span data-fr="Recherche un stage — Sept. 2027" data-en="Looking for internship — Sept. 2027">Recherche un stage — Sept. 2027</span>
       </div>
-    </header>
-
-    <main>
-      <section class="hero" id="hero">
-        <div class="container hero-grid">
-          <div class="hero-text">
-            <p class="eyebrow" data-i18n="hero.eyebrow"></p>
-            <h1 data-i18n="hero.title"></h1>
-            <p class="hero-subtitle" data-i18n="hero.subtitle"></p>
-            <div class="hero-actions">
-              <a href="#projects" class="btn primary" data-i18n="hero.ctaPrimary"></a>
-              <a href="#contact" class="btn ghost" data-i18n="hero.ctaSecondary"></a>
-            </div>
-          </div>
-          <div class="hero-card">
-            <div class="avatar-circle">
-              <span>AS</span>
-            </div>
-            <div class="hero-card-info">
-              <p class="hero-card-name">Alexis Sapone</p>
-              <p class="hero-card-role" data-i18n="hero.role"></p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="section">
-        <div class="container">
-          <h2 class="section-title" data-i18n="about.title"></h2>
-          <p class="section-text" data-i18n="about.description"></p>
-        </div>
-      </section>
-
-      <section id="projects" class="section section-alt">
-        <div class="container">
-          <h2 class="section-title" data-i18n="projects.title"></h2>
-          <p class="section-text" data-i18n="projects.intro"></p>
-          <div class="cards-grid">
-            <article class="card">
-              <h3 class="card-title" data-i18n="projects.items.0.title"></h3>
-              <p class="card-text" data-i18n="projects.items.0.description"></p>
-              <span class="card-tag" data-i18n="projects.items.0.tag"></span>
-            </article>
-            <article class="card">
-              <h3 class="card-title" data-i18n="projects.items.1.title"></h3>
-              <p class="card-text" data-i18n="projects.items.1.description"></p>
-              <span class="card-tag" data-i18n="projects.items.1.tag"></span>
-            </article>
-            <article class="card">
-              <h3 class="card-title" data-i18n="projects.items.2.title"></h3>
-              <p class="card-text" data-i18n="projects.items.2.description"></p>
-              <span class="card-tag" data-i18n="projects.items.2.tag"></span>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" class="section">
-        <div class="container">
-          <h2 class="section-title" data-i18n="skills.title"></h2>
-          <p class="section-text" data-i18n="skills.intro"></p>
-          <div class="pill-list" id="skills-list">
-            <span class="pill">HTML</span>
-            <span class="pill">CSS</span>
-            <span class="pill">JavaScript</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section section-alt">
-        <div class="container contact-grid">
+      <h1 data-fr="Alexis Sapone,<br><em>Data Analyst</em>" data-en="Alexis Sapone,<br><em>Data Analyst</em>">Alexis Sapone,<br><em>Data Analyst</em></h1>
+      <p class="hero-desc" data-fr="Étudiant en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business. Passionné par l'analyse de données, le machine learning et la business intelligence." data-en="MSc Data & AI for Business student at Albert School (Eugenia School) and Grande École programme at PSB Paris School of Business. Passionate about data analysis, machine learning and business intelligence.">Étudiant en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business. Passionné par l'analyse de données, le machine learning et la business intelligence.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary" data-fr="Voir mes projets ↓" data-en="View projects ↓">Voir mes projets ↓</a>
+        <a href="#contact" class="btn btn-outline" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-avatar">AS</div>
           <div>
-            <h2 class="section-title" data-i18n="contact.title"></h2>
-            <p class="section-text" data-i18n="contact.description"></p>
-          </div>
-          <div class="contact-card">
-            <p data-i18n="contact.emailLabel"></p>
-            <a href="mailto:ton.email@example.com" class="contact-email">ton.email@example.com</a>
-            <p class="contact-note" data-i18n="contact.note"></p>
+            <div class="hero-card-name">Alexis Sapone</div>
+            <div class="hero-card-role">Data Analyst</div>
           </div>
         </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-content">
-        <span>&copy; <span id="year"></span> Alexis Sapone</span>
-        <span data-i18n="footer.madeWith"></span>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-val">8+</div>
+            <div class="hero-stat-label" data-fr="Projets Data" data-en="Data Projects">Projets Data</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">3</div>
+            <div class="hero-stat-label" data-fr="Langues" data-en="Languages">Langues</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">2</div>
+            <div class="hero-stat-label" data-fr="Certifications" data-en="Certifications">Certifications</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">C1</div>
+            <div class="hero-stat-label" data-fr="Anglais" data-en="English">Anglais</div>
+          </div>
+        </div>
       </div>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
-  </body>
-  </html>
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// à propos" data-en="// about">// à propos</div>
+    <div class="section-title" data-fr="Un profil <em>data-driven</em>" data-en="A <em>data-driven</em> profile">Un profil <em>data-driven</em></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p data-fr="Actuellement en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business (accréditations AACSB, EFMD, AMBA, EPAS, BGA), je développe une double compétence business et technique tournée vers la data." data-en="Currently pursuing an MSc in Data & AI for Business at Albert School (Eugenia School) alongside the Grande École programme at PSB Paris School of Business (AACSB, EFMD, AMBA, EPAS, BGA accreditations), I am building a dual business and technical skillset focused on data.">Actuellement en MSc Data & AI for Business à Albert School (Eugenia School) et en programme Grande École à PSB Paris School of Business (accréditations AACSB, EFMD, AMBA, EPAS, BGA), je développe une double compétence business et technique tournée vers la data.</p>
+        <p data-fr="Mon parcours m'a permis de travailler sur des projets variés en SQL, Python, Power BI, Dataiku, Tableau et des outils d'automatisation comme Make et N8n. Je recherche un stage en Data Analyst pour septembre 2027, d'une durée de 6 mois." data-en="My academic journey has allowed me to work on diverse projects involving SQL, Python, Power BI, Dataiku, Tableau, and automation tools like Make and N8n. I am looking for a 6-month Data Analyst internship starting September 2027.">Mon parcours m'a permis de travailler sur des projets variés en SQL, Python, Power BI, Dataiku, Tableau et des outils d'automatisation comme Make et N8n. Je recherche un stage en Data Analyst pour septembre 2027, d'une durée de 6 mois.</p>
+      </div>
+      <div class="about-info">
+        <div class="about-info-item">
+          <div class="about-info-label" data-fr="Localisation" data-en="Location">Localisation</div>
+          <div class="about-info-value">Romainville, France</div>
+        </div>
+        <div class="about-info-item">
+          <div class="about-info-label">Email</div>
+          <div class="about-info-value"><a href="mailto:saponealexis@icloud.com">saponealexis@icloud.com</a></div>
+        </div>
+        <div class="about-info-item">
+          <div class="about-info-label">LinkedIn</div>
+          <div class="about-info-value"><a href="https://www.linkedin.com/in/alexis-sapone/" target="_blank">Alexis Sapone</a></div>
+        </div>
+        <div class="about-info-item">
+          <div class="about-info-label" data-fr="Langues" data-en="Languages">Langues</div>
+          <div class="about-info-value" data-fr="Anglais C1 · Espagnol B2 · Italien B2" data-en="English C1 · Spanish B2 · Italian B2">Anglais C1 · Espagnol B2 · Italien B2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// formation" data-en="// education">// formation</div>
+    <div class="section-title" data-fr="Mon <em>parcours</em> académique" data-en="My <em>academic</em> journey">Mon <em>parcours</em> académique</div>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-date">2025 — <span data-fr="en cours" data-en="present">en cours</span></div>
+        <div>
+          <div class="edu-school">Albert School (Eugenia School)</div>
+          <div class="edu-degree" data-fr="MSc Data & AI for Business" data-en="MSc Data & AI for Business">MSc Data & AI for Business</div>
+          <div class="edu-tags">
+            <span class="edu-tag">Data Science</span>
+            <span class="edu-tag">Machine Learning</span>
+            <span class="edu-tag">Business Strategy</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-date">2021 — <span data-fr="en cours" data-en="present">en cours</span></div>
+        <div>
+          <div class="edu-school">PSB Paris School of Business</div>
+          <div class="edu-degree" data-fr="Programme Grande École — Master 2 : Marketing Insights & Data Analytics Strategy" data-en="Grande École Programme — Master 2: Marketing Insights & Data Analytics Strategy">Programme Grande École — Master 2 : Marketing Insights & Data Analytics Strategy</div>
+          <div class="edu-tags">
+            <span class="edu-tag">AACSB</span>
+            <span class="edu-tag">EFMD</span>
+            <span class="edu-tag">AMBA</span>
+            <span class="edu-tag">EPAS</span>
+            <span class="edu-tag">BGA</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-date">2018 — 2021</div>
+        <div>
+          <div class="edu-school">Lycée Sainte Louise — Paris</div>
+          <div class="edu-degree" data-fr="Baccalauréat : Mathématiques, Physique-Chimie — Mention Assez Bien" data-en="Baccalauréat: Mathematics, Physics-Chemistry — Honours">Baccalauréat : Mathématiques, Physique-Chimie — Mention Assez Bien</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// compétences" data-en="// skills">// compétences</div>
+    <div class="section-title" data-fr="Stack <em>technique</em>" data-en="Technical <em>stack</em>">Stack <em>technique</em></div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-icon">🗄️</div>
+        <div class="skill-cat-title" data-fr="Bases de données & SQL" data-en="Databases & SQL">Bases de données & SQL</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">SQL</span>
+          <span class="skill-tag highlight">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">🐍</div>
+        <div class="skill-cat-title" data-fr="Programmation" data-en="Programming">Programmation</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Python</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">BeautifulSoup</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">📊</div>
+        <div class="skill-cat-title" data-fr="BI & Visualisation" data-en="BI & Visualization">BI & Visualisation</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Power BI</span>
+          <span class="skill-tag highlight">Tableau</span>
+          <span class="skill-tag">DAX</span>
+          <span class="skill-tag">Power Query (M)</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">🤖</div>
+        <div class="skill-cat-title" data-fr="Data Science & IA" data-en="Data Science & AI">Data Science & IA</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Dataiku</span>
+          <span class="skill-tag highlight">Dust</span>
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Cursor</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">⚡</div>
+        <div class="skill-cat-title" data-fr="Automatisation & CRM" data-en="Automation & CRM">Automatisation & CRM</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Make</span>
+          <span class="skill-tag highlight">N8n</span>
+          <span class="skill-tag">Salesforce Marketing Cloud</span>
+          <span class="skill-tag">Google Sheets</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">💼</div>
+        <div class="skill-cat-title" data-fr="Outils & Productivité" data-en="Tools & Productivity">Outils & Productivité</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Pack Office</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// projets" data-en="// projects">// projets</div>
+    <div class="section-title" data-fr="Mes <em>réalisations</em>" data-en="My <em>projects</em>">Mes <em>réalisations</em></div>
+    <div class="projects-grid">
+
+      <!-- Project 1: SQL NYC -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">SQL · PostgreSQL</span>
+          </div>
+          <div class="project-title" data-fr="Analyse sanitaire des restaurants de New York" data-en="NYC Restaurant Sanitary Inspection Analysis">Analyse sanitaire des restaurants de New York</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Le Department of Health de NYC réalise +400 000 inspections/an. Le projet vise à optimiser le ciblage des inspections en analysant les données sanitaires, les plaintes citoyennes et la présence de rongeurs." data-en="NYC's Department of Health conducts 400K+ inspections yearly. This project aims to optimize inspection targeting by analyzing sanitary data, citizen complaints and rodent presence.">Le Department of Health de NYC réalise +400 000 inspections/an. Le projet vise à optimiser le ciblage des inspections en analysant les données sanitaires, les plaintes citoyennes et la présence de rongeurs.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Réduire de 15–25 % les maladies alimentaires et augmenter de 30 % l'efficacité des inspections grâce à une approche data-driven." data-en="Reduce foodborne illnesses by 15–25% and increase inspection efficiency by 30% through a data-driven approach.">Réduire de 15–25 % les maladies alimentaires et augmenter de 30 % l'efficacité des inspections grâce à une approche data-driven.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Identification des quartiers et cuisines à risque, corrélation entre présence de rongeurs et scores sanitaires, recommandations de ciblage géographique des inspections." data-en="Identified high-risk boroughs and cuisines, correlated rodent activity with sanitary scores, recommended geographically-targeted inspections.">Identification des quartiers et cuisines à risque, corrélation entre présence de rongeurs et scores sanitaires, recommandations de ciblage géographique des inspections.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">PostgreSQL</span>
+            <span class="project-tag">JOIN</span>
+            <span class="project-tag" data-fr="Nettoyage de données" data-en="Data Cleaning">Nettoyage de données</span>
+            <span class="project-tag" data-fr="Analyse exploratoire" data-en="Exploratory Analysis">Analyse exploratoire</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Python Clash Royale -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Python · Web Scraping</span>
+          </div>
+          <div class="project-title" data-fr="Analyse de la méta de Clash Royale" data-en="Clash Royale Meta Analysis">Analyse de la méta de Clash Royale</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Extraction et analyse des données de Clash Royale via web scraping (BeautifulSoup) pour comprendre les tendances de la méta et identifier les decks dominants." data-en="Extracted and analyzed Clash Royale data via web scraping (BeautifulSoup) to understand meta trends and identify dominant decks.">Extraction et analyse des données de Clash Royale via web scraping (BeautifulSoup) pour comprendre les tendances de la méta et identifier les decks dominants.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Analyser la composition des decks méta, mesurer l'efficacité par catégorie de carte et comprendre le rôle de la synergie." data-en="Analyze meta deck composition, measure effectiveness by card category and understand the role of synergy.">Analyser la composition des decks méta, mesurer l'efficacité par catégorie de carte et comprendre le rôle de la synergie.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Démonstration que 8 cartes puissantes ≠ deck puissant. Le coût moyen en élixir des decks méta est de 3,5 avec une efficacité de ~37,6 %. La synergie prime sur la puissance individuelle." data-en="Demonstrated that 8 powerful cards ≠ powerful deck. Average elixir cost of meta decks: 3.5 with ~37.6% efficiency. Synergy matters more than individual card power.">Démonstration que 8 cartes puissantes ≠ deck puissant. Le coût moyen en élixir des decks méta est de 3,5 avec une efficacité de ~37,6 %. La synergie prime sur la puissance individuelle.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">BeautifulSoup</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Matplotlib</span>
+          </div>
+          <a href="https://github.com/eugenia-MZ/projet_Clash_Royale" target="_blank" class="project-link">
+            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3: Dataiku Air Passengers -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Dataiku · Machine Learning</span>
+          </div>
+          <div class="project-title" data-fr="Prédiction de l'affluence des passagers aériens" data-en="Air Passenger Traffic Prediction">Prédiction de l'affluence des passagers aériens</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Utilisation du dataset de vols aux États-Unis sur Dataiku pour explorer et prédire le nombre de passagers quotidiens en fonction des aéroports, dates et délais de réservation." data-en="Used US flight dataset in Dataiku to explore and predict daily passenger volumes based on airports, dates and booking lead times.">Utilisation du dataset de vols aux États-Unis sur Dataiku pour explorer et prédire le nombre de passagers quotidiens en fonction des aéroports, dates et délais de réservation.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Analyser les tendances du trafic aérien et construire un modèle prédictif (LightGBM, XGBoost, Random Forest) pour estimer le volume de passagers." data-en="Analyze air traffic trends and build a predictive model (LightGBM, XGBoost, Random Forest) to estimate passenger volumes.">Analyser les tendances du trafic aérien et construire un modèle prédictif (LightGBM, XGBoost, Random Forest) pour estimer le volume de passagers.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Le modèle LightGBM obtient le meilleur R² (0,517). Chicago (ORD), Atlanta (ATL) et Los Angeles (LAX) identifiés comme les aéroports les plus affluents." data-en="LightGBM achieved the best R² (0.517). Chicago (ORD), Atlanta (ATL) and Los Angeles (LAX) identified as busiest airports.">Le modèle LightGBM obtient le meilleur R² (0,517). Chicago (ORD), Atlanta (ATL) et Los Angeles (LAX) identifiés comme les aéroports les plus affluents.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Dataiku</span>
+            <span class="project-tag">LightGBM</span>
+            <span class="project-tag">XGBoost</span>
+            <span class="project-tag" data-fr="Prédiction" data-en="Prediction">Prédiction</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Tableau Dashboard -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Tableau</span>
+          </div>
+          <div class="project-title" data-fr="Dashboard d'analyse des commandes au Brésil" data-en="Brazil E-commerce Orders Dashboard">Dashboard d'analyse des commandes au Brésil</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Création d'un dashboard interactif sur Tableau pour analyser les commandes e-commerce au Brésil : statuts, répartition géographique, délais et tendances temporelles." data-en="Created an interactive Tableau dashboard to analyze Brazilian e-commerce orders: statuses, geographic distribution, delivery times and temporal trends.">Création d'un dashboard interactif sur Tableau pour analyser les commandes e-commerce au Brésil : statuts, répartition géographique, délais et tendances temporelles.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Visualiser les KPI de performance commerciale et identifier les écarts entre délais estimés et réels." data-en="Visualize commercial performance KPIs and identify gaps between estimated and actual delivery times.">Visualiser les KPI de performance commerciale et identifier les écarts entre délais estimés et réels.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="100 757 commandes délivrées analysées. Pic de commandes identifié en novembre 2017. Les délais estimés sont systématiquement supérieurs aux délais réels." data-en="100,757 delivered orders analyzed. Order peak identified in November 2017. Estimated delivery times systematically exceed actual times.">100 757 commandes délivrées analysées. Pic de commandes identifié en novembre 2017. Les délais estimés sont systématiquement supérieurs aux délais réels.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Tableau</span>
+            <span class="project-tag">Dashboard</span>
+            <span class="project-tag">KPI</span>
+            <span class="project-tag" data-fr="Cartographie" data-en="Mapping">Cartographie</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Dust + NeoAtelier -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Dust · Multi-Agents IA</span>
+          </div>
+          <div class="project-title" data-fr="BuildConnect & NeoAtelier — Digitalisation du BTP" data-en="BuildConnect & NeoAtelier — Digitizing Construction">BuildConnect & NeoAtelier — Digitalisation du BTP</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Conception d'un écosystème numérique complet pour transformer les entreprises BTP traditionnelles : architecture multi-agents IA (7 agents spécialisés sur Dust), site e-commerce, base de données et stratégie social media." data-en="Designed a complete digital ecosystem to transform traditional construction companies: multi-agent AI architecture (7 specialized agents on Dust), e-commerce site, database and social media strategy.">Conception d'un écosystème numérique complet pour transformer les entreprises BTP traditionnelles : architecture multi-agents IA (7 agents spécialisés sur Dust), site e-commerce, base de données et stratégie social media.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Automatiser l'audit, l'extraction de contenu, la conception technique et le déploiement digital d'entreprises BTP. Créer NeoAtelier, une app SaaS de gestion pour artisans (devis, planning, stock)." data-en="Automate audit, content extraction, technical design and digital deployment for construction firms. Build NeoAtelier, a SaaS management app for tradespeople (quotes, planning, stock).">Automatiser l'audit, l'extraction de contenu, la conception technique et le déploiement digital d'entreprises BTP. Créer NeoAtelier, une app SaaS de gestion pour artisans (devis, planning, stock).</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Pipeline multi-agents fonctionnel, dashboard professionnel avec KPI en temps réel, modèle économique (40€/mois Pro), roadmap de déploiement en 5 semaines." data-en="Functional multi-agent pipeline, professional dashboard with real-time KPIs, business model (€40/mo Pro), 5-week deployment roadmap.">Pipeline multi-agents fonctionnel, dashboard professionnel avec KPI en temps réel, modèle économique (40€/mois Pro), roadmap de déploiement en 5 semaines.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Dust</span>
+            <span class="project-tag">Multi-Agents IA</span>
+            <span class="project-tag">SaaS</span>
+            <span class="project-tag">UX Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6: Stratégie Paris Sportifs -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Google Sheets · Data Analysis</span>
+          </div>
+          <div class="project-title" data-fr="Stratégie de paris sportifs optimisée (Football)" data-en="Optimized Sports Betting Strategy (Football)">Stratégie de paris sportifs optimisée (Football)</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Analyse de 5 saisons de données sur 5 ligues européennes (Premier League, Bundesliga, Serie A, Ligue 1, La Liga) pour identifier des patterns exploitables dans les cotes des bookmakers." data-en="Analyzed 5 seasons of data across 5 European leagues (Premier League, Bundesliga, Serie A, Ligue 1, La Liga) to identify exploitable patterns in bookmaker odds.">Analyse de 5 saisons de données sur 5 ligues européennes (Premier League, Bundesliga, Serie A, Ligue 1, La Liga) pour identifier des patterns exploitables dans les cotes des bookmakers.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Comparer les ROI par type de pari (1X2, Over/Under, Handicap asiatique), par ligue et par période de saison pour construire une stratégie durable." data-en="Compare ROI by bet type (1X2, Over/Under, Asian Handicap), by league and by season period to build a sustainable strategy.">Comparer les ROI par type de pari (1X2, Over/Under, Handicap asiatique), par ligue et par période de saison pour construire une stratégie durable.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Le Handicap asiatique Away (B365AHA) est le seul marché à ROI équilibré (0 %). Recommandation : parier sur les nuls en Bundesliga/Serie A et les AHA en Ligue 1/Serie A/Premier League, fenêtre novembre-décembre." data-en="Asian Handicap Away (B365AHA) is the only market with balanced ROI (0%). Recommendation: bet on draws in Bundesliga/Serie A and AHA in Ligue 1/Serie A/Premier League, November-December window.">Le Handicap asiatique Away (B365AHA) est le seul marché à ROI équilibré (0 %). Recommandation : parier sur les nuls en Bundesliga/Serie A et les AHA en Ligue 1/Serie A/Premier League, fenêtre novembre-décembre.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Google Sheets</span>
+            <span class="project-tag">ROI Analysis</span>
+            <span class="project-tag">Heatmaps</span>
+            <span class="project-tag" data-fr="Patterns saisonniers" data-en="Seasonal Patterns">Patterns saisonniers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 7: Make Automation -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Make · Apify · Google Sheets</span>
+          </div>
+          <div class="project-title" data-fr="Scraping automatisé d'offres LinkedIn" data-en="Automated LinkedIn Job Scraping">Scraping automatisé d'offres LinkedIn</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Mise en place de workflows automatisés sur Make pour scraper les offres d'emploi LinkedIn via Apify, avec stockage structuré dans Google Sheets et relance automatique des scénarios." data-en="Set up automated Make workflows to scrape LinkedIn job listings via Apify, with structured storage in Google Sheets and automatic scenario re-triggering.">Mise en place de workflows automatisés sur Make pour scraper les offres d'emploi LinkedIn via Apify, avec stockage structuré dans Google Sheets et relance automatique des scénarios.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Automatiser la veille d'offres d'emploi pour identifier rapidement les opportunités pertinentes en data analytics." data-en="Automate job market monitoring to quickly identify relevant data analytics opportunities.">Automatiser la veille d'offres d'emploi pour identifier rapidement les opportunités pertinentes en data analytics.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="2 pipelines fonctionnels : recherche → scraping (Apify) → pause → récupération → mise à jour Google Sheets, avec un second scénario de relance automatique." data-en="2 functional pipelines: search → scraping (Apify) → wait → retrieval → Google Sheets update, with a second auto-relaunch scenario.">2 pipelines fonctionnels : recherche → scraping (Apify) → pause → récupération → mise à jour Google Sheets, avec un second scénario de relance automatique.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Make</span>
+            <span class="project-tag">Apify</span>
+            <span class="project-tag">Google Sheets</span>
+            <span class="project-tag" data-fr="Automatisation" data-en="Automation">Automatisation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// expériences" data-en="// experience">// expériences</div>
+    <div class="section-title" data-fr="Parcours <em>professionnel</em>" data-en="Professional <em>experience</em>">Parcours <em>professionnel</em></div>
+    <div class="exp-grid">
+      <div class="exp-item">
+        <div class="exp-date" data-fr="Fév. — Août 2024" data-en="Feb. — Aug. 2024">Fév. — Août 2024</div>
+        <div>
+          <div class="exp-role" data-fr="Stage Assistant Comptable" data-en="Accounting Assistant Intern">Stage Assistant Comptable</div>
+          <div class="exp-company">BTPSHOP — Fontenay-sous-Bois</div>
+          <div class="exp-tasks" data-fr="Analyse de données financières. Automatisation de tableaux sur Excel. Vérification et structuration de bases de données. Gestion des données comptables et suivi des comptes clients et fournisseurs." data-en="Financial data analysis. Excel spreadsheet automation. Database verification and structuring. Accounting data management and client/supplier account tracking.">Analyse de données financières. Automatisation de tableaux sur Excel. Vérification et structuration de bases de données. Gestion des données comptables et suivi des comptes clients et fournisseurs.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date" data-fr="Juil. — Août 2019" data-en="Jul. — Aug. 2019">Juil. — Août 2019</div>
+        <div>
+          <div class="exp-role" data-fr="Stage Assistant Administratif" data-en="Administrative Assistant Intern">Stage Assistant Administratif</div>
+          <div class="exp-company" data-fr="Cabinet BLAESI (Avocats) — Paris 1er" data-en="BLAESI Law Firm — Paris 1st">Cabinet BLAESI (Avocats) — Paris 1er</div>
+          <div class="exp-tasks" data-fr="Gestion et traitement de données sur Excel. Saisie et mise à jour de bases de données. Classement et organisation des dossiers administratifs. Accueil téléphonique et gestion des courriers." data-en="Excel data management and processing. Data entry and database updates. Administrative file organization. Phone reception and mail handling.">Gestion et traitement de données sur Excel. Saisie et mise à jour de bases de données. Classement et organisation des dossiers administratifs. Accueil téléphonique et gestion des courriers.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// certifications" data-en="// certifications">// certifications</div>
+    <div class="section-title" data-fr="Certifications <em>obtenues</em>" data-en="Earned <em>certifications</em>">Certifications <em>obtenues</em></div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">📊</div>
+        <div>
+          <div class="cert-name">Complete Power BI Bootcamp</div>
+          <div class="cert-issuer">Nikolai Schuler — Udemy</div>
+          <div class="cert-date">2024</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🗄️</div>
+        <div>
+          <div class="cert-name">The Complete SQL Masterclass</div>
+          <div class="cert-issuer">Nikolai Schuler — Udemy</div>
+          <div class="cert-date">2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="section-inner fade-in">
+    <div class="section-label" data-fr="// contact" data-en="// contact">// contact</div>
+    <div class="section-title" data-fr="Travaillons <em>ensemble</em>" data-en="Let's work <em>together</em>">Travaillons <em>ensemble</em></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a href="mailto:saponealexis@icloud.com" class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">saponealexis@icloud.com</div>
+          </div>
+        </a>
+        <a href="tel:+33626153893" class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label" data-fr="Téléphone" data-en="Phone">Téléphone</div>
+            <div class="contact-value">06 26 15 38 93</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/alexis-sapone/" target="_blank" class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">Alexis Sapone</div>
+          </div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label" data-fr="Adresse" data-en="Address">Adresse</div>
+            <div class="contact-value">15/17 Bd Henri Barbusse, 93230 Romainville</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <h3 data-fr="Disponible pour un stage" data-en="Available for internship">Disponible pour un stage</h3>
+        <p data-fr="Je recherche un stage de 6 mois en tant que Data Analyst à partir de septembre 2027. N'hésitez pas à me contacter !" data-en="I am looking for a 6-month Data Analyst internship starting September 2027. Feel free to reach out!">Je recherche un stage de 6 mois en tant que Data Analyst à partir de septembre 2027. N'hésitez pas à me contacter !</p>
+        <a href="mailto:saponealexis@icloud.com" class="btn btn-primary" data-fr="Envoyer un email ✉️" data-en="Send an email ✉️">Envoyer un email ✉️</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p>© 2026 Alexis Sapone — <span data-fr="Portfolio réalisé avec soin" data-en="Portfolio crafted with care">Portfolio réalisé avec soin</span></p>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+// Language toggle
+let currentLang = 'fr';
+
+function toggleLang() {
+  currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  document.documentElement.setAttribute('data-lang', currentLang);
+  document.documentElement.lang = currentLang;
+  
+  // Update all lang-toggle buttons
+  document.querySelectorAll('.lang-toggle').forEach(btn => {
+    btn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+  });
+  
+  // Update all translatable elements
+  document.querySelectorAll('[data-fr][data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + currentLang);
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = text;
+    } else {
+      el.innerHTML = text;
+    }
+  });
+}
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('active');
+}
+
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Close mobile menu on resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) closeMenu();
+});
+</script>
+</body>
+</html>
