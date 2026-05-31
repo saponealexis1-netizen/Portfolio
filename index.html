@@ -418,6 +418,23 @@ footer {
   border: 1px dashed var(--border);
   margin: 0 32px 32px;
 }
+
+/* ===================== PROJECTION NOTICE ===================== */
+.projection-notice {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(90deg, rgba(245,158,11,0.12), rgba(79,143,255,0.10));
+  border: 1px solid rgba(245,158,11,0.25);
+  padding: 10px 18px; border-radius: 12px;
+  font-size: 0.82rem; color: var(--text);
+  margin-bottom: 20px; max-width: 100%;
+  line-height: 1.45;
+}
+.projection-notice .projection-icon {
+  font-size: 1rem; flex-shrink: 0;
+}
+.projection-notice strong {
+  color: var(--accent2); font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -458,6 +475,10 @@ footer {
 <section class="hero">
   <div class="hero-inner">
     <div>
+      <div class="projection-notice">
+        <span class="projection-icon">⏳</span>
+        <span data-fr="<strong>Portfolio projeté</strong> — Ce site illustre mon parcours en cours et anticipe certaines expériences et formations à venir (Albert School 2025, PMU Sept. 2025+)." data-en="<strong>Projected portfolio</strong> — This site reflects my ongoing journey and anticipates some upcoming experiences and education (Albert School 2025, PMU Sept. 2025+)."><strong>Portfolio projeté</strong> — Ce site illustre mon parcours en cours et anticipe certaines expériences et formations à venir (Albert School 2025, PMU Sept. 2025+).</span>
+      </div>
       <div class="hero-badge">
         <span data-fr="Recherche un stage — Sept. 2027" data-en="Looking for internship — Sept. 2027">Recherche un stage — Sept. 2027</span>
       </div>
@@ -669,6 +690,53 @@ footer {
     <div class="section-label" data-fr="// projets" data-en="// projects">// projets</div>
     <div class="section-title" data-fr="Mes <em>réalisations</em>" data-en="My <em>projects</em>">Mes <em>réalisations</em></div>
     <div class="projects-grid">
+
+      <!-- Project 0: Hackathon Mirakl -->
+      <div class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-tech-badge">Hackathon · Mirakl · Marketplace Strategy</span>
+          </div>
+          <div class="project-title" data-fr="Hackathon Mirakl — Marketplace Growth Engine" data-en="Mirakl Hackathon — Marketplace Growth Engine">Hackathon Mirakl — Marketplace Growth Engine</div>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Contexte" data-en="Context">Contexte</span>
+              <span class="project-meta-value" data-fr="Hackathon organisé par Mirakl en partenariat avec Albert School. Mission : concevoir un moteur de croissance pour une marketplace, de l'acquisition à la fidélisation, en s'appuyant sur la donnée et l'IA." data-en="Hackathon organized by Mirakl in partnership with Albert School. Mission: design a growth engine for a marketplace, from acquisition to retention, leveraging data and AI.">Hackathon organisé par Mirakl en partenariat avec Albert School. Mission : concevoir un moteur de croissance pour une marketplace, de l'acquisition à la fidélisation, en s'appuyant sur la donnée et l'IA.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Objectif" data-en="Goal">Objectif</span>
+              <span class="project-meta-value" data-fr="Construire en équipe une stratégie data-driven de croissance marketplace : segmentation vendeurs, scoring d'opportunités, levers d'activation, et présentation business pitchée au jury Mirakl." data-en="Build a data-driven marketplace growth strategy as a team: seller segmentation, opportunity scoring, activation levers, and a business presentation pitched to the Mirakl jury.">Construire en équipe une stratégie data-driven de croissance marketplace : segmentation vendeurs, scoring d'opportunités, levers d'activation, et présentation business pitchée au jury Mirakl.</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label" data-fr="Résultat" data-en="Result">Résultat</span>
+              <span class="project-meta-value" data-fr="Livrable complet « Marketplace Growth Engine » : diagnostic, leviers de croissance, KPIs et roadmap. Code et analyses partagés sur GitHub, deck final présenté devant Mirakl et Stéphane Velasquez." data-en="Complete deliverable “Marketplace Growth Engine”: diagnostic, growth levers, KPIs and roadmap. Code and analyses shared on GitHub, final deck presented to Mirakl and Stéphane Velasquez.">Livrable complet « Marketplace Growth Engine » : diagnostic, leviers de croissance, KPIs et roadmap. Code et analyses partagés sur GitHub, deck final présenté devant Mirakl et Stéphane Velasquez.</span>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Mirakl</span>
+            <span class="project-tag">Marketplace</span>
+            <span class="project-tag">Growth Strategy</span>
+            <span class="project-tag">Data Analysis</span>
+            <span class="project-tag">Pitch</span>
+          </div>
+          <div class="project-links">
+            <a href="assets/pdf/Hackathon-Mirakl-Marketplace-Growth-Engine.pdf" target="_blank" class="project-link" data-fr="Voir le deck PDF" data-en="View deck PDF">
+              Voir le deck PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/MehdiUI94/hackathon-mirakl/" target="_blank" class="project-link">
+              GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/st%C3%A9phane-velasquez/recent-activity/all/" target="_blank" class="project-link" data-fr="Voir sur LinkedIn" data-en="See on LinkedIn">
+              LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-images">
+          <div class="project-img-container">
+            <img src="assets/img/hackathon-mirakl.png" alt="Photo de groupe Hackathon Mirakl × Albert School" loading="lazy">
+          </div>
+        </div>
+      </div>
 
       <!-- Project 1: SQL NYC -->
       <div class="project-card">

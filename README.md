@@ -2,6 +2,8 @@
 
 Ce portfolio présente mon profil de Data Analyst, mes expériences et mes projets.
 
+> **Portfolio projeté** : le site illustre mon parcours en cours et anticipe certaines expériences et formations à venir (Albert School 2025, PMU Sept. 2025+). Une bulle d'information en haut de la page le précise pour le visiteur.
+
 ## Présentation
 
 Portfolio bilingue (français / anglais) avec un design moderne, lisible sur ordinateur et téléphone.
@@ -33,6 +35,7 @@ Compétences en SQL, Python, BI (Power BI, Tableau), Dataiku, Salesforce CRM, au
 
 Plusieurs projets data sont présentés, notamment:
 
+- Hackathon Mirakl × Albert School — Marketplace Growth Engine (deck PDF + GitHub)
 - Analyse SQL des inspections sanitaires à New York
 - Analyse de données Clash Royale en Python
 - Prédiction de trafic passagers (Dataiku)
@@ -40,7 +43,7 @@ Plusieurs projets data sont présentés, notamment:
 - Analyse des ventes sur Power BI
 - Projet de stratégie de paris sportifs (Google Sheets)
 
-Chaque projet inclut une description et, lorsque disponible, un lien vers le livrable PDF.
+Chaque projet inclut une description et, lorsque disponible, un lien vers le livrable PDF et/ou le dépôt GitHub.
 
 ### Certifications
 
